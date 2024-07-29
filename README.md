@@ -11,6 +11,7 @@ Generate recommendations based on search results
 
 # **Clone the repository:**
 git clone https://github.com/yourusername/Recommendation-API.git
+
 **1. Create a Virtual Environment:**
 python -m venv venv
 
@@ -21,8 +22,6 @@ Linux: source venv/bin/activate
 **3. Install Dependencies:**
 pip install -r requirements.txt
 
-# **4. Install dependencies**: 
-pip install -r requirements.txt
 
 # **Run the server:** 
 flask run
