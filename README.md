@@ -9,7 +9,7 @@ Search news articles using keywords or sentences
 Generate recommendations based on search results
 
 # **Clone the repository:**
-git clone https://github.com/yourusername/Recommendation-API.git
+git clone https://github.com/Akshay646/Recommendation-API.git
 
 # **Install dependencies**: 
 pip install -r requirements.txt
