@@ -61,5 +61,5 @@ def get_recommendations_route():
     recommendations = get_recommendations(query_params['q'], articles)
     return jsonify(recommendations), 200
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
