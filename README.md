@@ -4,9 +4,6 @@ This API is built using Flask (Python) and provides news recommendations by sear
 # **IMPORTANT!!!!**
 The functionalities of this API are demonstrated using a news database, with queries and requests tailored to this dataset. You can modify the endpoints and use cases to fit your specific requirements, while the core recommendation logic remains unchanged
 
-#  **Overview**
-This API is built using Flask (Python) and provides news recommendations by searching into the News API. It leverages TF-IDF and cosine similarity algorithms to recommend articles based on provided keywords or sentences.
-
 # **Features**
 Search news articles using keywords or sentences
 Generate recommendations based on search results
