@@ -18,8 +18,8 @@ pip install -r requirements.txt
 flask run
 
 # **Endpoints**
-**1. /api/news/search?q=<Insert-Your-Search-Query-Here>**
-**2. /api/news/recommendations?q=<Insert-Your-Query-Here>**
+/api/news/search?q=<Insert-Your-Search-Query-Here>
+/api/news/recommendations?q=<Insert-Your-Query-Here>
 
 # **Usage**
 Access the API at http://localhost:5000
