@@ -17,7 +17,7 @@ news_api_key = app.config['NEWS_API_KEY']
 base_url = app.config['BASE_URL']
 
 # MongoDB Configuration
-mongo_client = MongoClient('mongodb://localhost:27017/')
+mongo_client = MongoClient('mongodb+srv://akshaytcs23617:Ker%40%2430799@news-cluster-main.k7znw.mongodb.net/')
 db = mongo_client['News']
 collection = db['DataSet']
 
