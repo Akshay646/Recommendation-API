@@ -29,7 +29,6 @@
     <Compile Include="app.py" />
     <Compile Include="config.py" />
     <Compile Include="Filters.py" />
-    <Compile Include="older_app.py" />
     <Compile Include="recommendation_engine.py" />
     <Compile Include="venv\Lib\site-packages\blinker\base.py" />
     <Compile Include="venv\Lib\site-packages\blinker\_utilities.py" />
