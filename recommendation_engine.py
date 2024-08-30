@@ -1,5 +1,5 @@
 # recommendation_engine.py
-
+from flask import jsonify
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -28,21 +28,30 @@ def fit_new_input(text, tfInit):
     return input_vector;
 
 def get_recommendations(keyword, data):
-    #preparing data frame from articles
+    # Prepare the DataFrame from the raw articles data
     df = prepare_dataframe(data)
     
-    #convert raw data into TF-IDF matrix and fitting Tf-IDF vectorizer with training data. 
-    tfidf_matrix, tfInit = vectorize_text(df);
+    # Convert raw data into TF-IDF matrix and fit the TF-IDF vectorizer with training data
+    tfidf_matrix, tfidf_vectorizer = vectorize_text(df)
     
-    #now tfInit is fitted with the training data and is ready to transform the new data.
-    input_vector = fit_new_input(keyword, tfInit);
+    # Transform the new input data (keyword) into the TF-IDF matrix format
+    input_vector = fit_new_input(keyword, tfidf_vectorizer)
     
-    #finding cosine similarity between TF-IDF matrix of input data and TF-IDF matrix for whole response.
+    # Find cosine similarity between the input vector and the TF-IDF matrix
     cosine_sim = cosine_similarity(input_vector, tfidf_matrix).flatten()
-
-    # Sorting it descendingly using argsort, which sorts the collection while maintaining the original index
-    similar_indices = cosine_sim.argsort()[::-1][1:]
-    similar_articles = [(df.iloc[i]['title'], cosine_sim[i]) for i in similar_indices]
     
-    #returning only top 5 recommendations
+    # Sort the indices of the similarity scores in descending order
+    similar_indices = cosine_sim.argsort()[::-1][1:]
+    
+    # Generate recommendations including MongoDB ID (converted to string)
+    similar_articles = [{
+        '_id': str(df.iloc[i]['_id']),  # Ensure '_id' is converted to string
+        'title': df.iloc[i]['title'],
+        'description': df.iloc[i]['description'],
+        'link': df.iloc[i]['link'],
+        'image_url': df.iloc[i]['image_url'],
+        'similarity_score': cosine_sim[i]
+    } for i in similar_indices]
+    
+    # Return the top 5 recommendations as JSON
     return similar_articles[:5]
