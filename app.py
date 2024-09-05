@@ -20,6 +20,8 @@ base_url = app.config['BASE_URL']
 mongo_client = MongoClient('mongodb+srv://akshaytcs23617:Ker%40%2430799@news-cluster-main.k7znw.mongodb.net/')
 db = mongo_client['News']
 collection = db['DataSet']
+# Fetch data from MongoDB
+articles = list(collection.find())  # Convert MongoDB cursor to list
 
 # Recommend top 5 articles most relevant to the keyword within the retrieved articles
 @app.route('/api/news/recommendations', methods=['POST'])  # Changed to POST to handle body data
@@ -27,9 +29,6 @@ def get_recommendations_route():
     # Extract the 'description' from the request body
     request_data = request.get_json()
     description = request_data.get('description')
-    
-    # Fetch data from MongoDB
-    articles = list(collection.find())  # Convert MongoDB cursor to list
     
     # Get recommendations based on the description
     recommendations = get_recommendations(description, articles)
